@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>此網頁僅供教育使用； 勞動部中彰坄分屬-前端UI與JS(Vue)框架工程師培訓班</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: '微軟正黑體';
+        font-weight: bold;
+    }
+
+    .close {
+        display: none !important;
+    }
+
+    .open {
+        display: flex !important;
+    }
+
+    .box,
+    .box-answer {
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+    button:active {
+        color: white;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    .help {
+        border: solid 5px red;
+    }
+
+    .wrap {
+        width: 100%;
+        background-color: #14213d;
+    }
+
+    .wrap .ad {
+        position: fixed;
+        width: 15%;
+        height: 25vh;
+        text-align: center;
+        border-radius: 15px;
+        background-color: #a8dadc;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .ad {
+            width: 16%;
+        }
+    }
+
+
+    .wrap .ad:hover {
+        transform: scale(1.1);
+    }
+
+    .wrap .ad:hover::before {
+        content: '養我';
+        position: absolute;
+        margin-left: 45%;
+    }
+
+    .wrap .ad>img {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .wrap .ad>p {
+        font-size: 20px;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .ad>p {
+            font-size: 16px;
+        }
+    }
+
+    .wrap .ad1 {
+        height: 60vh;
+        top: 5%;
+        right: 5%;
+    }
+
+    .wrap .ad2 {
+        top: 5%;
+        left: 5%;
+    }
+
+    .wrap .ad3 {
+        bottom: 5%;
+        right: 5%;
+    }
+
+    .wrap .ad4 {
+        height: 60vh;
+        bottom: 5%;
+        left: 5%;
+    }
+
+    .wrap .start {
+        margin: auto;
+        width: 50%;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: #ee9b00;
+    }
+
+    .wrap .start .explain {
+        width: 50%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .wrap .start .explain h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .wrap .start button {
+        width: 25%;
+        height: 10%;
+        margin-left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 15px;
+        font-size: 18px;
+        background-color: #d62828;
+    }
+
+    .wrap .start button:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+    .wrap .start button:active {
+        color: white;
+        cursor: pointer;
+        transform: scale(1.1) translate(-50%, 0);
+    }
+
+    .wrap .middle {
+        margin: auto;
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        border-radius: 15px;
+        background-color: #fca311;
+        display: none;
+
+    }
+
+    .wrap .middle .timer {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        font-size: 20px;
+        border: 3px solid black;
+    }
+
+    .wrap .middle .game-window {
+        margin: 0 auto;
+        height: 500px;
+        width: 500px;
+        border-radius: 15px;
+        background-color: #e5e5e5;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .middle .game-window {
+            padding: 10px;
+            margin: 0 auto;
+            height: 300px;
+            width: 300px;
+            border-radius: 15px;
+            background-color: #e5e5e5;
+        }
+    }
+
+    .wrap .middle .game-window .box,
+    .wrap .middle .game-window .box-answer {
+        border-radius: 15px;
+    }
+
+    .wrap .middle .btns {
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrap .middle .btns button {
+        width: 15%;
+        height: 100%;
+        margin: 0 5%;
+        border-radius: 15px;
+        font-weight: bold;
+        position: relative;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .middle .btns button {
+            width: 50%;
+            height: 50%;
+        }
+    }
+
+    .wrap .middle .btns #score:active::before {
+        content: '加油加油加加油';
+        position: absolute;
+        left: 5%;
+        top: 0;
+        color: black;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .middle .btns #score:active::before {
+            content: '';
+        }
+    }
+
+    .wrap .middle .btns #score:active::after {
+        content: '加油加油加加油';
+        position: absolute;
+        left: 5%;
+        bottom: 0;
+        color: black;
+    }
+
+    @media(max-width:1000px) {
+        .wrap .middle .btns #score:active::after {
+            content: '';
+        }
+    }
+
+    .wrap .end {
+        margin: auto;
+        width: 50%;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: #fca311;
+        display: none;
+    }
+
+    .wrap .end button {
+        width: 25%;
+        height: 10%;
+        margin-left: 50%;
+        transform: translate(-50%, 0);
+        border-radius: 15px;
+        font-size: 18px;
+        background-color: #d62828;
+    }
+
+    .wrap .end button:hover {
+        background-color: darkred;
+        cursor: pointer;
+    }
+
+    .wrap .end button:active {
+        color: white;
+        cursor: pointer;
+        transform: scale(1.1) translate(-50%, 0);
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="ad ad1">
+            <img src="./catImg/cat1.jpg" alt="廠商1"></img>
+            <p>廣告1</p>
+            <p>現正招募中</p>
+            <p>買大送小</p>
+        </div>
+        <div class="ad ad2">
+            <img src="./catImg/cat2.jpg" alt="廠商2"></img>
+            <p>廣告2</p>
+        </div>
+        <div class="ad ad3">
+            <img src="./catImg/cat3.jpg" alt="廠商3"></img>
+            <p>廣告3</p>
+        </div>
+        <div class="ad ad4">
+            <img src="./catImg/cat4.jpg" alt="廠商4"></img>
+            <p>廣告4</p>
+            <p>熱情招募中</p>
+            <p>穩賺不賠</p>
+        </div>
+        <div class="start">
+            <h1>色弱遊戲</h1>
+            <button id="start-btn">開始遊戲</button>
+            <div class="explain">
+                <h2>遊戲說明</h2>
+                <p>1.按下開始遊戲</br></br>2.在方塊區域按下顏色不同的區塊</br></br>3.30秒內，正確加1分，錯誤會倒扣。</br></br>4.每答對五題，難度將上升一級。</p>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="timer">30</div>
+            <div class="game-window"></div>
+            <div class="btns">
+                <button id="score">目前得分<span class="current-score">0</span></button>
+                <button id="pause">時間暫停</button>
+                <button id="help">求救</button>
+            </div>
+        </div>
+        <div class="end">
+            <h1>遊戲結束</h1>
+            <div class="result">
+                <h2>獲得分數 <span class="result-score">0</span>分</h2>
+                <p class="evaluation">評語</p>
+            </div>
+            <button id="again-btn">重新開始</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const start = document.querySelector('.start')
+    const middle = document.querySelector('.middle')
+    const end = document.querySelector('.end')
+    const startBtn = document.querySelector('#start-btn')
+    const timer = document.querySelector('.timer')
+    const gameWindow = document.querySelector('.game-window')
+    const againBtn = document.querySelector('#again-btn')
+    const currentScore = document.querySelector('.current-score')
+    const resultScore = document.querySelector('.result-score')
+    const evaluation = document.querySelector('.evaluation')
+    const help = document.querySelector('#help')
+    const pause = document.querySelector('#pause')
+
+
+
+    startBtn.onclick = function () {
+        start.classList.add('close')
+        middle.classList.add('open')
+
+        //倒數
+        function countDown() {
+            timer.innerHTML = timer.textContent - 1
+        }
+        var countDown = setInterval(countDown, 1000)
+
+        //時間到，切換成結果
+        function timeUp() {
+            clearInterval(countDown)
+            middle.classList.replace("open", "close")
+            end.classList.add("open")
+            if (resultScore.textContent >= 30) {
+                evaluation.innerHTML = '根本通靈吧！！！'
+            } else if (resultScore.textContent >= 25) {
+                evaluation.innerHTML = '太強了吧！！！'
+            } else if (resultScore.textContent >= 20) {
+                evaluation.innerHTML = '跟我一樣的普通人等級。'
+            } else if (resultScore.textContent >= 15) {
+                evaluation.innerHTML = '加油！遊戲不難，難的是人生。'
+            } else if (resultScore.textContent >= 10) {
+                evaluation.innerHTML = '你按開始之後就跑去洗澡嗎！'
+            } else {
+                evaluation.innerHTML = '我做得要死要活，也好好玩一下嘛Q_____Q'
+            }
+        }
+        var timeUp = setTimeout(timeUp, 30000)
+    }
+
+    //遊戲內容
+    let level = 2
+    var num = Math.floor(Math.random() * level * level)
+    var colorR = Math.floor(Math.random() * 200)
+    var colorG = Math.floor(Math.random() * 200)
+    var colorB = Math.floor(Math.random() * 200)
+    for (let i = 0; i < level * level; i++) {
+        if (i == num) {
+            gameWindow.innerHTML += `<div class="box-answer" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR},${colorG},${colorB})" onclick="score(1)"></div>`
+        } else {
+            gameWindow.innerHTML += `<div class="box" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR - 15 + level},${colorG - 15 + level},${colorB - 15 + level})" onclick="score(-1)"></div>`
+        }
+    }
+
+    //計分與升級(每5分升級一次)
+    function score(calc) {
+
+        currentScore.innerHTML = Number(currentScore.textContent) + Number(calc)
+        resultScore.innerHTML = Number(resultScore.textContent) + Number(calc)
+        colorR = Math.floor(Math.random() * 200)
+        colorG = Math.floor(Math.random() * 200)
+        colorB = Math.floor(Math.random() * 200)
+
+        var exp = ["", "", 5, 10, 15, 20, 25, 30, 35]
+        if (currentScore.textContent == exp[level]) {
+            level = level + 1
+        } else {
+            level = level
+        }
+
+        if (calc == 1 && currentScore.textContent <= level * level) {
+            gameWindow.innerHTML = ""
+            var num = Math.floor(Math.random() * level * level)
+            for (let i = 0; i < level * level; i++) {
+                if (i == num) {
+                    gameWindow.innerHTML += `<div class="box-answer" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR},${colorG},${colorB})" onclick="score(1)"></div>`
+                } else {
+                    gameWindow.innerHTML += `<div class="box" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR - 15 + level},${colorG - 15 + level},${colorB - 15 + level})" onclick="score(-1)"></div>`
+                }
+            }
+            //未答對時不執行
+        } else {
+            return
+        }
+    }
+
+    //求救鍵
+    help.onclick = function () {
+        document.querySelector('.box-answer').classList.add('help')
+    }
+
+    pause.onclick = function () {
+        alert('時間暫停魔法~~~')
+    }
+
+    //再來一次
+    againBtn.onclick = function () {
+        end.classList.replace('open', 'close')
+        middle.classList.replace('close', 'open')
+        currentScore.innerHTML = 0
+        resultScore.innerHTML = 0
+        timer.innerHTML = 30
+        gameWindow.innerHTML = ""
+        level = 2
+        var num = Math.floor(Math.random() * 4)
+        for (let i = 0; i < level * level; i++) {
+            if (i == num) {
+                gameWindow.innerHTML += `<div class="box-answer" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR},${colorG},${colorB})" onclick="score(1)"></div>`
+            } else {
+                gameWindow.innerHTML += `<div class="box" style="width:${95 / level}%; height:${95 / level}%; background-color:rgb(${colorR - 15 + level},${colorG - 15 + level},${colorB - 15 + level})" onclick="score(-1)"></div>`
+            }
+        }
+        //重新倒數
+        function countDown() {
+            timer.innerHTML = timer.textContent - 1
+        }
+        countDown = setInterval(countDown, 1000)
+
+        //時間到，切換成結果
+        function timeUp() {
+            clearInterval(countDown)
+            middle.classList.replace("open", "close")
+            end.classList.add("open")
+            if (resultScore.textContent >= 30) {
+                evaluation.innerHTML = '根本通靈吧！！！'
+            } else if (resultScore.textContent >= 25) {
+                evaluation.innerHTML = '太強了吧！！！'
+            } else if (resultScore.textContent >= 20) {
+                evaluation.innerHTML = '跟我一樣的普通人等級。'
+            } else if (resultScore.textContent >= 15) {
+                evaluation.innerHTML = '加油！遊戲不難，難的是人生。'
+            } else if (resultScore.textContent >= 10) {
+                evaluation.innerHTML = '你按開始之後就跑去洗澡嗎！'
+            } else {
+                evaluation.innerHTML = '我做得要死要活，也好好玩一下嘛Q_____Q'
+            }
+        }
+        timeUp = setTimeout(timeUp, 30000)
+    }
+
+
+
+</script>
+
+</html>

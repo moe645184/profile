@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人履歷-廖志寬</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <section class="home">
+        <div class="home-greeting">
+            <h1>Welcome to my profile. Please scroll down ↓</h1><span>_</span>
+        </div>
+        <div class="home-profile">
+            <div class="home-profile-pic">
+                <img src="./profile.jpg" alt="個人照">
+                <div class="home-profile-name">
+                    <h2>廖志寬</h2>
+                    <p>前端工程師</p>
+                </div>
+                <p>moe645184@gmail.com</p>
+            </div>
+            <div class="home-profile-text">
+                <div class="btns">
+                    <a href="#about"><button>關於我</button></a>
+                    <a href="#portfolio"><button>作品集</button></a>
+                    <a href="https://codepen.io/ulncpfgt-the-decoder/collections/"
+                        target="_blank"><button>Codepen</button></a>
+                </div>
+                <p>哲學系畢業，喜歡挑戰與提升自己，憑著一股熱愛，一頭栽進了全新的領域。因為不是相關科系，所以更懂得付出努力。除了實體培訓課程以外，也使用線上資源學習。期望自己能夠成為專業前端工程師</p>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="about-stage" style="z-index:4;">
+            <div class="panel left-1">
+                <h2>工作經歷</h2>
+                <img src="./group_project.jpg" alt="">
+            </div>
+            <div class="panel right-1">
+                <p>2018 - 2020 餐飲業：儲備幹部</p>
+                <li>時間控管</li>
+                <li>溝通協調</li>
+                <li>危機處理</li>
+                <p>2020 - 2021 家具製造業：生產管理</p>
+                <li>時間控管</li>
+                <li>溝通協調</li>
+                <li>危機處理</li>
+                <p>2021 - 2022 化工製造業：技術員</p>
+                <li>時間控管</li>
+                <li>危機處理</li>
+            </div>
+        </div>
+        <div class="about-stage" style="z-index:3;">
+            <div class="panel left-2">
+                <h2>程式學習</h2>
+                <img src="./group_project.jpg" alt="">
+            </div>
+            <div class="panel right-2">
+                <p>2022 03 離職</p>
+                <p>2022 04 線上課程(六角學院)</p>
+                <p>2022 08 職訓局課程(Vue)</p>
+                <p>~迄今 學會的技能</p>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JaveScript</li>
+                <li>SCSS</li>
+                <li>Bootstrap</li>
+                <li>Vue.js</li>
+                <li>Laravel</li>
+                <li>GSAP</li>
+                <li>Github</li>
+            </div>
+        </div>
+        <div class="about-stage" style="z-index:2;">
+            <div class="panel left-3">
+                <h2>現在階段</h2>
+                <img src="./solo.jpg" alt="">
+            </div>
+            <div class="panel right-3">
+                <p>我的人格特質</p>
+                <li>勇於挑戰</li>
+                <li>喜歡學習</li>
+                <li>團隊合作</li>
+                <li>善於溝通</li>
+                <li>時間調配</li>
+                <p>這段時間不論是上課或空閒時間，當花了相當多時間學習，熬了不知道多少個夜晚。雖然艱辛，但每當一個作品完成時，總會產生莫大的成就感。尤其當整個團隊都各司其職，盡自己所能完成一個專題時，成品出來時的感動，更是難以言喻！而我也期待能夠創造出更多的感動！
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" class="portfolio">
+        <h2>專案經歷</h2>
+        <div class="portfolio-wrap">
+            <video src="./40b32eba92.mp4" controls muted></video>
+            <div class="portfolio-text">
+                <h3>昨日攝影工作室</h3>
+                <p>該專案是我們找了開攝影工作室的業主，依照業主需求所做出的網站。我負責首頁、作品集頁面以及全部檔案整合、RWD，以及後端部分。雖然時間壓力與工作量很大，很多天都是熬到太陽出來才休息。但我很高興自己經過幾個月的學習，能夠做到這些事情。這是對自己能力的肯定。而有了團隊合作與業主的經驗，更讓我了解未來工作可能會發生的事情，與自己還要加強的地方！
+                </p>
+                <p>使用技術：HTML、SCSS、JavaScript、Laravel</p>
+                <p>網站連結：<a target="_blank" href="https://111-08-fcu-yesterday.dev-hub.io/">連結位置</a></p>
+            </div>
+        </div>
+        <h2>其他作品</h2>
+        <div class="portfolio-wrap">
+            <img src="./weather_card.jpg" alt="">
+            <div class="portfolio-text">
+                <h3>天氣卡片</h3>
+                <p>這個作品中，是第一次使用API串接氣象局資料。也是第一次使用SVG做特效。在製作網頁學習的路上，總會有許多新奇的發現，讓我非常開心並且有成就感！
+                </p>
+                <p>使用技術：HTML、CSS、JavaScript</p>
+                <p>網站連結：<a target="_blank" href="./weather_card.html">連結位置</a></p>
+            </div>
+        </div>
+        <div class="portfolio-wrap" style="padding-top: 10%;">
+            <img src="./blind_test.jpg" alt="">
+            <div class="portfolio-text">
+                <h3>色弱遊戲</h3>
+                <p>這個作品中，是第一次用網頁做出了一個小遊戲。
+                </p>
+                <p>使用技術：HTML、CSS、JavaScript</p>
+                <p>網站連結：<a target="_blank" href="./blind_test.html">連結位置</a></p>
+            </div>
+        </div>
+
+        <p>其他作品與筆記：<a target="_blank" href="https://moe645184.github.io/portfolio/">作品連結</a></p>
+
+    </section>
+    <section id="footer" class="footer">
+        <p>Thank you for watching.</br>Contact me moe645184@gmail.com</p>
+    </section>
+
+
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        const HomeTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".home",
+                pin: true,
+                scrub: true,
+            },
+        });
+
+        HomeTL.to(".home-greeting", {
+            yPercent: -100,
+            opacity: 0
+        }).from('.home-profile', {
+            xPercent: -200,
+            opacity: 0
+        }, "<")
+
+        gsap.from('.home-greeting > h1', {
+            text: '',
+            duration: 3,
+            ease: 'none',
+        })
+        gsap.to('.home-greeting>span', {
+            opacity: 0,
+            repeat: -1,
+            duration: 0.5
+        })
+
+        const AboutTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about",
+                pin: true,
+                scrub: true,
+            },
+        });
+
+        AboutTL.to('.left-1', {
+            yPercent: 100
+        }).to('.right-1', {
+            yPercent: -100
+        }, "<").to('.left-2', {
+            yPercent: 100
+        }).to('.right-2', {
+            yPercent: -100
+        }, "<")
+
+        const portfolioTL = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.portfolio',
+                scrub: true,
+            }
+        })
+
+    </script>
+</body>
+
+</html>
